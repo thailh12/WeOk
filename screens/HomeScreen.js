@@ -14,6 +14,9 @@ import Card from '../components/Card'
 import { MonoText } from '../components/StyledText'
 import { LinearGradient } from 'expo-linear-gradient'
 
+import { Subscribe } from 'unstated'
+import container from '../containers/container'
+
 const member = [
   {
     name: 'John Snow',
@@ -31,43 +34,52 @@ const member = [
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('', {})}>
-        <View
-          wrapperStyle={{
-            flex: 1,
-          }}
-        >
-          <LinearGradient
-            colors={['#ffff', '#FAFF00']}
-            style={{
-              borderRadius: 4,
-              flexDirection: 'row',
-            }}
-            start={[0, 0]}
-            end={[1, 1]}
-          >
-            <View>
-              <Image
-                style={{ margin: 0 }}
-                resizeMode="cover"
-                source={require('../assets/images/background.png')}
-              />
-              <View style={{ margin: 10 }}>
-                <Text style={{ marginBottom: 3 }}>Name</Text>
-                <Text style={{ marginBottom: 3 }}>08761273786</Text>
-                <Text style={{ marginBottom: 3 }}>Hanoi</Text>
+    <Subscribe to={[container]}>
+      {container => {
+        const { me } = container.state
+        return (
+          <View style={styles.container}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('', {})}>
+              <View
+                wrapperStyle={{
+                  flex: 1,
+                }}
+              >
+                <View
+                  style={{
+                    borderRadius: 4,
+                    flexDirection: 'row',
+                    borderColor: 'grey',
+                    borderWidth: 0.5,
+                    marginBottom: 10,
+                    borderRadius: 9,
+                  }}
+                >
+                  <View>
+                    <Image
+                      style={{ margin: 0 }}
+                      resizeMode="cover"
+                      source={require('../assets/images/background.png')}
+                    />
+                    <View style={{ margin: 10 }}>
+                      <Text style={{ marginBottom: 3 }}>{me.name}</Text>
+                      <Text style={{ marginBottom: 3 }}>{me.phone}</Text>
+                      <Text style={{ marginBottom: 3 }}>{me.lastLocation}</Text>
+                    </View>
+                    <Button type="clear" title="More" onPress={() => this.props.navigate('', {})} />
+                  </View>
+                </View>
               </View>
-            </View>
-          </LinearGradient>
-        </View>
-      </TouchableWithoutFeedback>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        {member.map((human, index) => {
-          return <Card info={human} key={index} />
-        })}
-      </ScrollView>
-    </View>
+            </TouchableWithoutFeedback>
+            <ScrollView contentContainerStyle={styles.contentContainer}>
+              {member.map((human) => {
+                return <Card info={human} key={human.phone} />
+              })}
+            </ScrollView>
+          </View>
+        )
+      }}
+    </Subscribe>
   )
 }
 
@@ -80,7 +92,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     paddingHorizontal: 15,
     paddingVertical: 15,
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
   },
   developmentModeText: {
