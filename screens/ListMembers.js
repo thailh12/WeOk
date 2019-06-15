@@ -6,14 +6,11 @@ import container from '../containers/container'
 import Card from '../components/Card'
 
 export default class ListMembers extends React.Component {
-
-    state = {
-        following: [{ name: 'Nguyen Thai Bao', phone: '1234567890', relationship: 'Brother' }, { name: 'Lam Ha Thai', phone: '1234098765', relationship: 'Mother' }, { name: 'Pham Ngoc Hoa', phone: '7209485720', relationship: 'Lover' }]
-    }
     render() {
         return (
             <Subscribe to={[container]}>
                 {container => {
+                    const {following} = container.state
                     return (
                         <ScrollView>
                             <View style={styles.container}>
@@ -25,7 +22,7 @@ export default class ListMembers extends React.Component {
                                     titleStyle={{ color: '#38A168' }}
                                 />
                                 {
-                                    this.state.following.map((per) => {
+                                    following.map((per) => {
                                         return (
                                             <View
                                                 key={per.phone}

@@ -32,14 +32,27 @@ const member = [
   },
 ]
 
-export default function HomeScreen() {
+fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/profile')
+.then(res=>res.json())
+.then(res => container.setState({me: res}))
+
+fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/follow')
+.then(res=>res.json())
+.then(res =>  {
+  res.shift()
+  res.reverse()
+  container.setState({following: res})
+})
+
+export default class HomeScreen extends React.Component {
+  render() {
   return (
     <Subscribe to={[container]}>
       {container => {
         const { me } = container.state
         return (
           <View style={styles.container}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('', {})}>
+            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('MapScreen')}>
               <View
                 wrapperStyle={{
                   flex: 1,
@@ -66,13 +79,13 @@ export default function HomeScreen() {
                       <Text style={{ marginBottom: 3 }}>{me.phone}</Text>
                       <Text style={{ marginBottom: 3 }}>{me.lastLocation}</Text>
                     </View>
-                    <Button type="clear" title="More" onPress={() => this.props.navigate('', {})} />
+                    <Button type="clear" title="More" onPress={() => this.props.navigate('MapScreen')} />
                   </View>
                 </View>
               </View>
             </TouchableWithoutFeedback>
             <ScrollView contentContainerStyle={styles.contentContainer}>
-              {member.map((human) => {
+              {container.state.following && container.state.following.map((human) => {
                 return <Card info={human} key={human.phone} />
               })}
             </ScrollView>
@@ -81,6 +94,7 @@ export default function HomeScreen() {
       }}
     </Subscribe>
   )
+}
 }
 
 HomeScreen.navigationOptions = {

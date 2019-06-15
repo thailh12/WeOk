@@ -18,7 +18,7 @@ export default class SignIn extends React.Component {
   }
 
   _onCancel = () => {
-    this.props.navigation.navigate('Links')
+    this.props.navigation.navigate('Home')
   }
 
   _call = phone => {
@@ -49,7 +49,7 @@ export default class SignIn extends React.Component {
             >
               <TextInput
                 style={styles.inputText}
-                value={phone}
+                value={phone + ''}
                 editable={false}
               />
               <Button
