@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput } from 'react-native'
+import { View, StyleSheet, TextInput, Alert } from 'react-native'
 import { Button } from 'react-native-elements'
 
 export default function SendMessage() {
@@ -19,15 +19,35 @@ export default function SendMessage() {
       height: 150,
       justifyContent: "flex-start"
     },
-    buttonStyle: {
+    buttonSend: {
       borderRadius: 0,
       marginLeft: 0,
       marginRight: 0,
       marginBottom: 0,
       borderRadius: 5,
       backgroundColor: '#38A169',
-    }
+    },
+    buttonCancel: {
+      borderRadius: 5,
+      marginTop: 10
+    },
   })
+
+  const alert = () => {
+    Alert.alert(
+      'Warning',
+      'Do you want to continue?',
+      [
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+          style: 'cancel',
+        },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
+      {cancelable: false},
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -42,9 +62,15 @@ export default function SendMessage() {
         />
       </View>
       <Button
-        buttonStyle={styles.buttonStyle}
-        title='SEND' />
+        buttonStyle={styles.buttonSend}
+        title='SEND'
+      />
+      <Button
+        buttonStyle={styles.buttonCancel}
+        type='outline'
+        title='Cancel'
+        onPress={alert}
+      />
     </View>
   )
 }
-
