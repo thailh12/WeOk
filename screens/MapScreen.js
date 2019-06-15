@@ -11,6 +11,7 @@ import { MapView } from 'expo';
 import { FontAwesome, Foundation } from '@expo/vector-icons';
 
 const { Marker } = MapView;
+import TodoList from '../components/TodoList'
 const { width, height } = Dimensions.get('screen');
 import container from '../containers/container'
 import { Subscribe } from 'unstated'
@@ -23,10 +24,6 @@ class Campings extends React.Component {
       tabCurrent: 'warning'
     };
   }
-
-  static navigationOptions = {
-    header: null,
-  };
 
   renderHeader() {
     return (
@@ -77,7 +74,9 @@ class Campings extends React.Component {
       )
     } else if (this.state.tabCurrent === 'todo') {
       return (
-        <Text>Todo</Text>
+        <View>
+          <TodoList />
+        </View>
       )
     } else if (this.state.tabCurrent === 'safezone') {
       return (
