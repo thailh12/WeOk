@@ -10,7 +10,7 @@ import SendMessageScreen from '../screens/SendMessage'
 import ReportScreen from '../screens/ReportScreen'
 import ListMembers from '../screens/ListMembers'
 import MapScreen from '../screens/MapScreen'
-
+import Settings from '../screens/Setting'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ReportScreen,
@@ -22,11 +22,7 @@ HomeStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-home`
-          : 'md-information-circle'
-      }
+      name={Platform.OS === 'ios' ? `ios-home` : 'md-information-circle'}
     />
   ),
 }
@@ -44,7 +40,7 @@ ListReportStack.navigationOptions = {
 
 const ListMemberStack = createStackNavigator({
   Settings: ListMembers,
-});
+})
 
 ListMemberStack.navigationOptions = {
   tabBarLabel: 'People',
