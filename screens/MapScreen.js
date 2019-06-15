@@ -70,7 +70,25 @@ class Campings extends React.Component {
   renderContent({ me }) {
     if(this.state.tabCurrent === 'warning') {
       return (
-        <Text>Warning</Text>
+        <View
+          style={{
+            borderColor: 'orange',
+            padding: 8,
+            borderRadius: 4,
+            borderWidth: 1,
+            marginTop: 10,
+            marginHorizontal: 8
+          }}
+        >
+          <Text
+            style={{
+              color: 'orange',
+              fontSize: 16,
+              marginBottom: 5
+            }}
+          >Not Safe</Text>
+          <Text>You will be in the range of disaster. Please prepare by our suggestion.</Text>
+        </View>
       )
     } else if (this.state.tabCurrent === 'todo') {
       return (

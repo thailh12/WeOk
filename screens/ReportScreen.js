@@ -1,7 +1,8 @@
 import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
-import { Card } from 'react-native-elements'
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, Linking } from 'react-native'
+import { Card, Button, Icon } from 'react-native-elements'
 import container from '../containers/container'
+import call from 'react-native-phone-call'
 
 export default class SignIn extends React.Component {
   constructor(props) {
@@ -20,10 +21,15 @@ export default class SignIn extends React.Component {
     this.props.navigation.navigate('Links')
   }
 
+  _call = phone => {
+      Linking.openURL(`tel:${phone}`)
+  }
+
   render() {
     const { name, phone, lastLocation, safe } = this.props.navigation.state.params
     
     return (
+      <ScrollView>
       <View style={styles.container}>
         <View style={{ margin: 20 }}>
           <Text style={styles.title}>Report</Text>
@@ -35,11 +41,28 @@ export default class SignIn extends React.Component {
               editable={false}
             />
             <Text style={styles.label}>Phone Number</Text>
-            <TextInput
-              style={styles.inputText}
-              value={phone}
-              editable={false}
-            />
+            <View
+              style={{
+                flexDirection: 'row',
+                
+              }}
+            >
+              <TextInput
+                style={styles.inputText}
+                value={phone}
+                editable={false}
+              />
+              <Button
+                icon={
+                  <Icon
+                    name='phone'
+                    size={38}
+                    color='white'
+                  />
+                }
+                onPress={() => this._call(phone)}
+              />
+            </View>
             <Text style={styles.label}>Last location</Text>
             <TextInput
               style={styles.inputText}
@@ -63,6 +86,7 @@ export default class SignIn extends React.Component {
           </TouchableOpacity>
         </View>
       </View>
+      </ScrollView>
     )
   }
 }
@@ -89,6 +113,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     backgroundColor: '#F5F5F5',
     fontSize: 15,
+    flex: 1
   },
   loginBtn: {
     height: 56,
