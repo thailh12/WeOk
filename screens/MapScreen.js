@@ -30,7 +30,7 @@ class Campings extends React.Component {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
         </View>
-        {this.renderTabs()}
+          {this.renderTabs()}
       </View>
     )
   }
@@ -42,13 +42,13 @@ class Campings extends React.Component {
           style={{ flex: 1, height: height * 0.8, width }}
           showsMyLocationButton
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.03,
-            longitudeDelta: 0.03,
+            latitude: 21.003817,
+            longitude: 105.847747,
+            latitudeDelta: 0.04,
+            longitudeDelta: 0.04,
           }}
         >
-          <Marker coordinate={me.latlng}>
+          <Marker coordinate={}>
             <View style={styles.myMarker}>
               <View style={styles.myMarkerDot} />
             </View>
@@ -92,7 +92,7 @@ class Campings extends React.Component {
       )
     } else if (this.state.tabCurrent === 'todo') {
       return (
-        <View>
+        <View style={styles.wrapTodo}>
           <TodoList />
         </View>
       )
@@ -204,9 +204,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  wrapTodo: {
+    paddingHorizontal: 10,
+  },
   headerContainer: {
     top: 0,
-    height: height * 0.15,
+    height: height * 0.085,
     width: width,
   },
   header: {
@@ -215,7 +218,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: height * 0.15,
-    paddingHorizontal: 14,
+    paddingHorizontal: 10,
   },
   location: {
     height: 24,

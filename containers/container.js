@@ -9,8 +9,8 @@ class Cont extends Container {
             closed: ['1234567890', '0987654321'],
             safe: true,
             latlng: {
-                latitude: 37.79335,
-                longitude: -122.4424,
+                latitude: 21.003817,
+                longitude: 105.847747,
             }
         },
         following: [
