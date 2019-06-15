@@ -38,14 +38,15 @@ export default function HomeScreen() {
             flex: 1,
           }}
         >
-          <LinearGradient
-            colors={['#ffff', '#FAFF00']}
+          <View
             style={{
               borderRadius: 4,
               flexDirection: 'row',
+              borderColor: 'grey',
+              borderWidth: 0.5,
+              marginBottom: 10,
+              borderRadius: 9,
             }}
-            start={[0, 0]}
-            end={[1, 1]}
           >
             <View>
               <Image
@@ -58,13 +59,14 @@ export default function HomeScreen() {
                 <Text style={{ marginBottom: 3 }}>08761273786</Text>
                 <Text style={{ marginBottom: 3 }}>Hanoi</Text>
               </View>
+              <Button type="clear" title="More" onPress={() => this.props.navigate('', {})} />
             </View>
-          </LinearGradient>
+          </View>
         </View>
       </TouchableWithoutFeedback>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         {member.map(human => {
-          return <Card info={human} />
+          return <Card key={human.name} info={human} />
         })}
       </ScrollView>
     </View>
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     marginTop: 50,
     paddingHorizontal: 15,
     paddingVertical: 15,
-    flex: 1,
+    // flex: 1,
     backgroundColor: '#fff',
   },
   developmentModeText: {
