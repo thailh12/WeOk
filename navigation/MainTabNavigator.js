@@ -9,6 +9,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SendMessageScreen from '../screens/SendMessage'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -30,6 +31,10 @@ HomeStack.navigationOptions = {
 
 const LinksStack = createStackNavigator({
   Links: LinksScreen,
+  SendMessageScreen: {
+    screen: SendMessageScreen,
+  },
+
 });
 
 LinksStack.navigationOptions = {
