@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { CheckBox } from 'react-native-elements'
+import { CheckBox, Divider } from 'react-native-elements'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 const state = {
@@ -21,29 +21,32 @@ class TodoList extends React.Component {
       <View>
         {state.list.map((item, index) => {
           return (
-            <TouchableOpacity
-              key={index}
-              onPress={() => {
-                state.list[index].completed = true
-                this.forceUpdate()
-              }}
-            >
-              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                <CheckBox checkedColor="green" checked={item.completed} />
-                <Text
-                  style={{
-                    textDecorationLine: item.completed ? 'line-through' : 'none',
-                    textDecorationStyle: 'solid',
-                  }}
-                >
-                  {item.description}
-                </Text>
-              </View>
-            </TouchableOpacity>
+            <View key={index}>
+              <TouchableOpacity
+                onPress={() => {
+                  state.list[index].completed = true
+                  this.forceUpdate()
+                }}
+              >
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <CheckBox checkedColor="green" checked={item.completed} />
+                  <Text
+                    style={{
+                      textDecorationLine: item.completed ? 'line-through' : 'none',
+                      textDecorationStyle: 'solid',
+                    }}
+                  >
+                    {item.description}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <Divider/>
+            </View>
           )
         })}
       </View>
     )
   }
 }
+
 export default TodoList

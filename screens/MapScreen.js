@@ -30,7 +30,7 @@ class Campings extends React.Component {
       <View style={styles.headerContainer}>
         <View style={styles.header}>
         </View>
-        {this.renderTabs()}
+          {this.renderTabs()}
       </View>
     )
   }
@@ -74,7 +74,7 @@ class Campings extends React.Component {
       )
     } else if (this.state.tabCurrent === 'todo') {
       return (
-        <View>
+        <View style={styles.wrapTodo}>
           <TodoList />
         </View>
       )
@@ -186,9 +186,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  wrapTodo: {
+    paddingHorizontal: 10,
+  },
   headerContainer: {
     top: 0,
-    height: height * 0.15,
+    height: height * 0.085,
     width: width,
   },
   header: {
@@ -197,7 +200,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: height * 0.15,
-    paddingHorizontal: 14,
+    paddingHorizontal: 10,
   },
   location: {
     height: 24,
