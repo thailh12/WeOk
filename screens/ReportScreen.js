@@ -1,6 +1,7 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, TextInput } from 'react-native'
 import { Card } from 'react-native-elements'
+import container from '../containers/container'
 
 export default class SignIn extends React.Component {
   constructor(props) {
@@ -20,14 +21,12 @@ export default class SignIn extends React.Component {
   }
 
   render() {
-    const { name, phone, lastLocation } = this.props.navigation.state.params
+    const { name, phone, lastLocation, safe } = this.props.navigation.state.params
+    
     return (
       <View style={styles.container}>
         <View style={{ margin: 20 }}>
           <Text style={styles.title}>Report</Text>
-          <Card>
-            <Text></Text>
-          </Card>
           <View>
             <Text style={styles.label}>Family Member</Text>
             <TextInput
