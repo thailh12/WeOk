@@ -48,7 +48,7 @@ class Campings extends React.Component {
             longitudeDelta: 0.04,
           }}
         >
-          <Marker coordinate={}>
+          <Marker coordinate={me.latlng}>
             <View style={styles.myMarker}>
               <View style={styles.myMarkerDot} />
             </View>
