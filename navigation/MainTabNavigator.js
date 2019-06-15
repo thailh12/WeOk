@@ -10,6 +10,7 @@ import SendMessageScreen from '../screens/SendMessage'
 import ReportScreen from '../screens/ReportScreen'
 import ListMembers from '../screens/ListMembers'
 import MapScreen from '../screens/MapScreen'
+import MarkerScreen from '../screens/MarkerScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -41,6 +42,9 @@ const ListReportStack = createStackNavigator({
   },
   MapScreen: {
     screen: MapScreen,
+  },
+  MarkerScreen: {
+    screen: MarkerScreen,
   }
 })
 

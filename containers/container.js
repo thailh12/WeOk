@@ -21,8 +21,8 @@ class Cont extends Container {
                 closed: ['1234567890', '0987654321'],
                 safe: true,
                 latlng: {
-                    latitude: 37.79335,
-                    longitude: -126.4424,
+                    latitude: 21.013817,
+                    longitude: 105.846747,
                 }
             },
             {
@@ -32,8 +32,8 @@ class Cont extends Container {
                 closed: ['1234567890', '0987654321'],
                 safe: true,
                 latlng: {
-                    latitude: 37.78865,
-                    longitude: -124.4324,
+                    latitude: 21.002817,
+                    longitude: 105.844747,
                 }
             },
         ],
