@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TextInput, Alert } from 'react-native'
 import { Button } from 'react-native-elements'
 
-export default function SendMessage() {
+export default function SendMessageScreen() {
   const styles = StyleSheet.create({
     container: {
       paddingHorizontal: 10,
