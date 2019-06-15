@@ -42,13 +42,13 @@ class Campings extends React.Component {
           style={{ flex: 1, height: height * 0.8, width }}
           showsMyLocationButton
           initialRegion={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.03,
-            longitudeDelta: 0.03,
+            latitude: 21.003817,
+            longitude: 105.847747,
+            latitudeDelta: 0.04,
+            longitudeDelta: 0.04,
           }}
         >
-          <Marker coordinate={me.latlng}>
+          <Marker coordinate={}>
             <View style={styles.myMarker}>
               <View style={styles.myMarkerDot} />
             </View>
