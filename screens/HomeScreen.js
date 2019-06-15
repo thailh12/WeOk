@@ -63,8 +63,8 @@ export default function HomeScreen() {
         </View>
       </TouchableWithoutFeedback>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        {member.map(human => {
-          return <Card info={human} />
+        {member.map((human, index) => {
+          return <Card info={human} key={index} />
         })}
       </ScrollView>
     </View>
