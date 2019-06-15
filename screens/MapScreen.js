@@ -1,36 +1,27 @@
-import React from 'react';
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  SafeAreaView,
-} from 'react-native';
-import { MapView } from 'expo';
-import { FontAwesome, Foundation } from '@expo/vector-icons';
+import React from 'react'
+import { ScrollView, StyleSheet, Text, View, Dimensions, SafeAreaView } from 'react-native'
+import { MapView } from 'expo'
+import { FontAwesome, Foundation } from '@expo/vector-icons'
 
-const { Marker } = MapView;
+const { Marker, Circle } = MapView
 import TodoList from '../components/TodoList'
-const { width, height } = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen')
 import container from '../containers/container'
 import { Subscribe } from 'unstated'
 
 class Campings extends React.Component {
-
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      tabCurrent: 'warning'
-    };
+      tabCurrent: 'warning',
+    }
   }
 
   renderHeader() {
     return (
       <View style={styles.headerContainer}>
-        <View style={styles.header}>
-        </View>
-          {this.renderTabs()}
+        <View style={styles.header} />
+        {this.renderTabs()}
       </View>
     )
   }
@@ -48,12 +39,28 @@ class Campings extends React.Component {
             longitudeDelta: 0.04,
           }}
         >
+          <Circle
+            center={{ latitude: 20.995302, longitude: 105.8432 }}
+            radius={500}
+            fillColor={'#42e7479e'}
+          />
+          <Circle
+            center={{ latitude: 21.003962, longitude: 105.847504 }}
+            radius={600}
+            fillColor={'#ff8508a6'}
+          />
+
           <Marker coordinate={me.latlng}>
             <View style={styles.myMarker}>
               <View style={styles.myMarkerDot} />
             </View>
           </Marker>
 
+          <Circle
+            center={{ latitude: 21.017883, longitude: 105.853416 }}
+            radius={1000}
+            fillColor={'#42e7479e'}
+          />
           {/* {mapSpots.map(marker => (
             <Marker
               key={`marker-${marker.id}`}
@@ -68,7 +75,7 @@ class Campings extends React.Component {
   }
 
   renderContent({ me }) {
-    if(this.state.tabCurrent === 'warning') {
+    if (this.state.tabCurrent === 'warning') {
       return (
         <View
           style={{
@@ -77,16 +84,18 @@ class Campings extends React.Component {
             borderRadius: 4,
             borderWidth: 1,
             marginTop: 10,
-            marginHorizontal: 8
+            marginHorizontal: 8,
           }}
         >
           <Text
             style={{
               color: 'orange',
               fontSize: 16,
-              marginBottom: 5
+              marginBottom: 5,
             }}
-          >Not Safe</Text>
+          >
+            Not Safe
+          </Text>
           <Text>You will be in the range of disaster. Please prepare by our suggestion.</Text>
         </View>
       )
@@ -97,77 +106,58 @@ class Campings extends React.Component {
         </View>
       )
     } else if (this.state.tabCurrent === 'safezone') {
-      return (
-        <View>
-          { this.renderMap({ me }) }
-        </View>
-      )
+      return <View>{this.renderMap({ me })}</View>
     }
   }
 
   handleTabWarning() {
     this.setState({
-      tabCurrent: 'warning'
+      tabCurrent: 'warning',
     })
   }
 
   handleTabTodo() {
     this.setState({
-      tabCurrent: 'todo'
+      tabCurrent: 'todo',
     })
   }
 
   handleTabSafeZone() {
     this.setState({
-      tabCurrent: 'safezone'
+      tabCurrent: 'safezone',
     })
   }
 
   renderTabs() {
     return (
       <View style={styles.tabs}>
-        <View
-          style={[
-            styles.tab,
-            this.state.tabCurrent === 'warning' ? styles.activeTab : null
-          ]}
-        >
+        <View style={[styles.tab, this.state.tabCurrent === 'warning' ? styles.activeTab : null]}>
           <Text
             style={[
               styles.tabTitle,
-              this.state.tabCurrent === 'warning' ? styles.activeTabTitle : null
+              this.state.tabCurrent === 'warning' ? styles.activeTabTitle : null,
             ]}
             onPress={() => this.handleTabWarning()}
           >
             Warning
           </Text>
         </View>
-        <View
-          style={[
-            styles.tab,
-            this.state.tabCurrent === 'todo' ? styles.activeTab : null
-          ]}
-        >
+        <View style={[styles.tab, this.state.tabCurrent === 'todo' ? styles.activeTab : null]}>
           <Text
             style={[
               styles.tabTitle,
-              this.state.tabCurrent === 'todo' ? styles.activeTabTitle : null
+              this.state.tabCurrent === 'todo' ? styles.activeTabTitle : null,
             ]}
             onPress={() => this.handleTabTodo()}
           >
             To Do List
           </Text>
         </View>
-        <View
-          style={[
-            styles.tab,
-            this.state.tabCurrent === 'safezone' ? styles.activeTab : null
-          ]}
-        >
+        <View style={[styles.tab, this.state.tabCurrent === 'safezone' ? styles.activeTab : null]}>
           <Text
             style={[
               styles.tabTitle,
-              this.state.tabCurrent === 'safezone' ? styles.activeTabTitle : null
+              this.state.tabCurrent === 'safezone' ? styles.activeTabTitle : null,
             ]}
             onPress={() => this.handleTabSafeZone()}
           >
@@ -181,21 +171,17 @@ class Campings extends React.Component {
   render() {
     return (
       <Subscribe to={[container]}>
-        {
-          container => {
-            const { me } = container.state
-            return (
-              <SafeAreaView style={styles.container}>
-                {this.renderHeader()}
-                <ScrollView style={styles.container}>
-                  {this.renderContent({ me })}
-                </ScrollView>
-              </SafeAreaView>
-            )
-          }
-        }
+        {container => {
+          const { me } = container.state
+          return (
+            <SafeAreaView style={styles.container}>
+              {this.renderHeader()}
+              <ScrollView style={styles.container}>{this.renderContent({ me })}</ScrollView>
+            </SafeAreaView>
+          )
+        }}
       </Subscribe>
-    );
+    )
   }
 }
 
@@ -296,7 +282,7 @@ const styles = StyleSheet.create({
     marginRight: 14,
   },
   campingImage: {
-    width: width * 0.30,
+    width: width * 0.3,
     height: width * 0.25,
     borderRadius: 6,
   },
@@ -307,14 +293,14 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(51, 83, 251, 0.2)'
+    backgroundColor: 'rgba(51, 83, 251, 0.2)',
   },
   myMarkerDot: {
     width: 12,
     height: 12,
     borderRadius: 12,
-    backgroundColor: '#3353FB'
-  }
-});
+    backgroundColor: '#3353FB',
+  },
+})
 
-export default Campings;
+export default Campings
