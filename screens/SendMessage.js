@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Alert } from 'react-native'
-import { Button } from 'react-native-elements'
+import { View, StyleSheet, TextInput, Text } from 'react-native'
+import { Button, Card } from 'react-native-elements'
 
-export default function SendMessageScreen() {
+export default function SendMessageScreen(props) {
   const styles = StyleSheet.create({
     container: {
       paddingHorizontal: 10,
@@ -12,7 +12,7 @@ export default function SendMessageScreen() {
       borderColor: '#38A169',
       borderWidth: 1,
       borderRadius: 5,
-      padding: 5,
+      padding: 18,
       marginBottom: 10,
     },
     textArea: {
@@ -29,47 +29,55 @@ export default function SendMessageScreen() {
     },
     buttonCancel: {
       borderRadius: 5,
-      marginTop: 10
+      marginTop: 10,
+      borderColor: '#38A169'
     },
   })
 
-  const alert = () => {
-    Alert.alert(
-      'Warning',
-      'Do you want to continue?',
-      [
-        {
-          text: 'Cancel',
-          onPress: () => console.log('Cancel Pressed'),
-          style: 'cancel',
-        },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-      ],
-      {cancelable: false},
-    );
-  }
+  const [message, setMessage] = React.useState('')
+
+  const { name } = props.navigation.state.params
 
   return (
     <View style={styles.container}>
+      <Text
+        style={{
+          fontSize: 18,
+          marginTop: 8
+        }}
+        >Send message</Text>
+
+      <Card>
+        <Text style={{ marginBottom: 8 }}>Message</Text>
+        <Text>{name + ' is in disaster location, you can send a message to check.'}</Text>
+      </Card>
+      <Text style={{ marginVertical: 8 }}>Message</Text>
       <View style={styles.textAreaContainer} >
         <TextInput
           style={styles.textArea}
           underlineColorAndroid="transparent"
-          placeholder="Type something..."
+          placeholder="Type your message here"
           placeholderTextColor="grey"
           numberOfLines={10}
           multiline={true}
+          defaultValue={message}
+          onChange={ e => setMessage(e.nativeEvent.text)}
+          // onChange={ e => console.log(e)}
         />
       </View>
       <Button
         buttonStyle={styles.buttonSend}
-        title='SEND'
+        title='Send'
+        onPress={() => {
+          alert(message)
+        }}
       />
       <Button
         buttonStyle={styles.buttonCancel}
         type='outline'
         title='Cancel'
-        onPress={alert}
+        titleStyle={{ color: '#38A169' }}
+        onPress={() => alert('Cancel')}
       />
     </View>
   )
