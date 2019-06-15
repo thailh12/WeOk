@@ -15,7 +15,7 @@ class CardInfo extends React.Component {
     return (
       <TouchableWithoutFeedback
         onPress={() => {
-          if (!this.props.info.safe) this.props.navigation.navigate('SendMessageScreen', {})
+          if (!this.props.info.safe) this.props.navigation.navigate('ReportScreen', this.props.info)
         }}
       >
         <View

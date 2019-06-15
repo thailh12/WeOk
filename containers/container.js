@@ -13,30 +13,7 @@ class Cont extends Container {
                 longitude: 105.847747,
             }
         },
-        following: [
-            {
-                name: 'Abcde',
-                phone: '123760340239',
-                lastLocation: 'Dong Da, Hanoi, Vietnam',
-                closed: ['1234567890', '0987654321'],
-                safe: true,
-                latlng: {
-                    latitude: 37.79335,
-                    longitude: -126.4424,
-                }
-            },
-            {
-                name: 'Bcdefg',
-                phone: '123760340239',
-                lastLocation: 'Dong Da, Hanoi, Vietnam',
-                closed: ['1234567890', '0987654321'],
-                safe: true,
-                latlng: {
-                    latitude: 37.78865,
-                    longitude: -124.4324,
-                }
-            },
-        ],
+        following: [],
 
     }
 }

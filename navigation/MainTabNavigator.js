@@ -14,6 +14,7 @@ import Settings from '../screens/Setting'
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ReportScreen,
+  MapScreen,
 })
 
 HomeStack.navigationOptions = {
@@ -28,15 +29,6 @@ HomeStack.navigationOptions = {
 
 const ListReportStack = createStackNavigator({
   Links: LinksScreen,
-  SendMessageScreen: {
-    screen: SendMessageScreen,
-  },
-  ReportScreen: {
-    screen: ReportScreen,
-  },
-  MapScreen: {
-    screen: MapScreen,
-  },
 })
 
 ListReportStack.navigationOptions = {
