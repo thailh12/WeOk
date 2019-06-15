@@ -14,7 +14,7 @@ export default class LinksScreen extends React.Component {
         <Button
           style={styles.button}
           title='Send Report Screen'
-          onPress={() => this.props.navigation.navigate('ReportScreen', {name: 'Nguyen Thai Bao', phone: '1234567890', lastLocation: 'Thanh Cong, Ba Dinh, Ha Noi'})}
+          onPress={() => this.props.navigation.navigate('ReportScreen', {name: 'Nguyen Thai Bao', phone: '0968038741', lastLocation: 'Thanh Cong, Ba Dinh, Ha Noi'})}
         />
         <Button
           style={styles.button}
