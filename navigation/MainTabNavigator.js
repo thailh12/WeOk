@@ -8,9 +8,13 @@ import LinksScreen from '../screens/LinksScreen'
 import SettingsScreen from '../screens/SettingsScreen'
 import SendMessageScreen from '../screens/SendMessage'
 import ReportScreen from '../screens/ReportScreen'
+import ListMembers from '../screens/ListMembers'
+import MapScreen from '../screens/MapScreen'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  ReportScreen,
+
 })
 
 HomeStack.navigationOptions = {
@@ -20,14 +24,14 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
+          ? `ios-home`
           : 'md-information-circle'
       }
     />
   ),
 }
 
-const LinksStack = createStackNavigator({
+const ListReportStack = createStackNavigator({
   Links: LinksScreen,
   SendMessageScreen: {
     screen: SendMessageScreen,
@@ -35,28 +39,31 @@ const LinksStack = createStackNavigator({
   ReportScreen: {
     screen: ReportScreen,
   },
+  MapScreen: {
+    screen: MapScreen,
+  }
 })
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+ListReportStack.navigationOptions = {
+  tabBarLabel: 'Reports',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-document' : 'md-link'} />
   ),
 }
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-})
+const ListMemberStack = createStackNavigator({
+  Settings: ListMembers,
+});
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+ListMemberStack.navigationOptions = {
+  tabBarLabel: 'People',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contacts' : 'md-options'} />
   ),
 }
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  ListReportStack,
+  ListMemberStack,
 })
