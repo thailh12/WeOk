@@ -42,9 +42,9 @@ const ListReportStack = createStackNavigator({
 })
 
 ListReportStack.navigationOptions = {
-  tabBarLabel: 'Reports',
+  tabBarLabel: 'People',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-document' : 'md-link'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contacts' : 'md-link'} />
   ),
 }
 
@@ -53,9 +53,9 @@ const ListMemberStack = createStackNavigator({
 })
 
 ListMemberStack.navigationOptions = {
-  tabBarLabel: 'People',
+  tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-contacts' : 'md-options'} />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-settings' : 'md-options'} />
   ),
 }
 
