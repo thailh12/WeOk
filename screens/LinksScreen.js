@@ -1,15 +1,16 @@
 
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native'
 import { Button, Avatar, Image } from 'react-native-elements'
 import { Subscribe } from 'unstated'
 import container from '../containers/container'
 import Card from '../components/Card'
+import Marker from './MarkerScreen'
 
 export default class ListMembers extends React.Component {
 
     static navigationOptions = () => ({
-        title: 'People connect',
+        title: 'People',
     });
 
     render() {
@@ -19,6 +20,8 @@ export default class ListMembers extends React.Component {
                     const {following} = container.state
                     return (
                         <ScrollView>
+                        <Marker/>
+
                             <View style={styles.container}>
                                 <Button
                                     type='outline'
@@ -29,8 +32,11 @@ export default class ListMembers extends React.Component {
                                 {
                                     following.map((per) => {
                                         return (
-                                            <View
+                                            <TouchableWithoutFeedback
+                                                onPress={() => this.props.navigation.navigate('Information', per)}
                                                 key={per.phone}
+                                            >
+                                            <View
                                                 style={{
                                                     flex: 1,
                                                     flexDirection: 'row',
@@ -65,11 +71,13 @@ export default class ListMembers extends React.Component {
                                                     </View>
                                                 </View>
                                             </View>
+                                            </TouchableWithoutFeedback>
                                         )
                                     })
                                 }
                             </View>
                         </ScrollView>
+                        
                     )
                 }
                 }
