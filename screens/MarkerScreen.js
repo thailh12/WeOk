@@ -17,7 +17,7 @@ class MarkerScreen extends React.Component {
     return (
       <View style={styles.map}>
         <MapView
-          style={{ flex: 1, height: height * 0.8, width }}
+          style={{ flex: 1, height: height * 0.1, width }}
           showsMyLocationButton
           initialRegion={{
             latitude: 21.003817,
@@ -38,7 +38,7 @@ class MarkerScreen extends React.Component {
               key={index}
               coordinate={people.latlng}
               title={people.name}
-              description={people.phone}
+              description={people.phone + ''}
             />
           ))}
         </MapView>
