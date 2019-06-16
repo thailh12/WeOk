@@ -6,10 +6,10 @@ import TabBarIcon from '../components/TabBarIcon'
 import HomeScreen from '../screens/HomeScreen'
 import LinksScreen from '../screens/LinksScreen'
 import SettingsScreen from '../screens/SettingsScreen'
-import SendMessageScreen from '../screens/SendMessage'
 import ReportScreen from '../screens/ReportScreen'
 import ListMembers from '../screens/ListMembers'
 import MapScreen from '../screens/MapScreen'
+import MarkerScreen from '../screens/MarkerScreen'
 import Settings from '../screens/Setting'
 
 const HomeStack = createStackNavigator({
@@ -30,6 +30,15 @@ HomeStack.navigationOptions = {
 
 const ListReportStack = createStackNavigator({
   Links: LinksScreen,
+  ReportScreen: {
+    screen: ReportScreen,
+  },
+  MapScreen: {
+    screen: MapScreen,
+  },
+  MarkerScreen: {
+    screen: MarkerScreen,
+  }
 })
 
 ListReportStack.navigationOptions = {

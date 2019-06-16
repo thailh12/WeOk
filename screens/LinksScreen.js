@@ -1,38 +1,94 @@
-import React from 'react';
-import { View, StyleSheet, Text } from 'react-native'
-import { Button } from 'react-native-elements'
 
-export default class LinksScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Button
-          style={styles.button}
-          title='Send Message Screen'
-          onPress={() => this.props.navigation.navigate('SendMessageScreen', {name: 'Lam Ha Thai'})}
-        />
-        <Button
-          style={styles.button}
-          title='Send Report Screen'
-          onPress={() => this.props.navigation.navigate('ReportScreen', {name: 'Nguyen Thai Bao', phone: '0968038741', lastLocation: 'Thanh Cong, Ba Dinh, Ha Noi'})}
-        />
-        <Button
-          style={styles.button}
-          title='Send Map Screen'
-          onPress={() => this.props.navigation.navigate('MapScreen')}
-        />
-      </View>
-    )
-  }
+import React from 'react'
+import { StyleSheet, View, Text, ScrollView } from 'react-native'
+import { Button, Avatar, Image } from 'react-native-elements'
+import { Subscribe } from 'unstated'
+import container from '../containers/container'
+import Card from '../components/Card'
+
+export default class ListMembers extends React.Component {
+    render() {
+        return (
+            <Subscribe to={[container]}>
+                {container => {
+                    const {following} = container.state
+                    return (
+                        <ScrollView>
+                            <View style={styles.container}>
+                                <Text style={styles.title}>Closed People</Text>
+                                <Button
+                                    type='outline'
+                                    title='Add new person'
+                                    buttonStyle={{ marginHorizontal: 15, marginBottom: 15, borderColor: '#38A168' }}
+                                    titleStyle={{ color: '#38A168' }}
+                                />
+                                {
+                                    following.map((per) => {
+                                        return (
+                                            <View
+                                                key={per.phone}
+                                                style={{
+                                                    flex: 1,
+                                                    flexDirection: 'row',
+                                                    borderColor: 'grey',
+                                                    borderWidth: 0.5,
+                                                    marginBottom: 10,
+                                                    borderRadius: 9,
+                                                    backgroundColor: '#dad7d766',
+                                                    marginHorizontal: 16
+                                                }}
+                                            >
+                                                <View
+                                                    style={{
+                                                        flex: 1,
+                                                        marginBottom: 10,
+                                                        borderRadius: 4,
+                                                        flexDirection: 'row',
+                                                        borderColor: 'grey',
+                                                        borderRadius: 4,
+                                                    }}
+                                                >
+                                                    <Avatar
+                                                        size="medium"
+                                                        rounded
+                                                        style={{ width: 50, height: 50, margin: 15 }}
+                                                        source={{ uri: 'https://picsum.photos/200.jpg' }}
+                                                    />
+                                                    <View style={{ margin: 10 }}>
+                                                        <Text style={{ marginBottom: 3 }}>{per.name}</Text>
+                                                        <Text style={{ marginBottom: 3 }}>{per.phone}</Text>
+                                                        <Text style={{ marginBottom: 3 }}>{per.relationship}</Text>
+                                                    </View>
+                                                </View>
+                                            </View>
+                                        )
+                                    })
+                                }
+                            </View>
+                        </ScrollView>
+                    )
+                }
+                }
+            </Subscribe>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 10,
-    paddingVertical: 10
-  },
-  button: {
-    marginTop: 10
-  }
+    container: {
+        flex: 1,
+        paddingHorizontal: 8
+    },
+    title: {
+        fontSize: 18,
+        marginVertical: 10,
+        marginLeft: 15
+    },
+    member: {
+
+    },
+    text: {
+        marginLeft: 10
+    }
 })
 
