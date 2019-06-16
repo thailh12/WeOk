@@ -7,6 +7,11 @@ import container from '../containers/container'
 import Card from '../components/Card'
 
 export default class ListMembers extends React.Component {
+
+    static navigationOptions = () => ({
+        title: 'People connect',
+    });
+
     render() {
         return (
             <Subscribe to={[container]}>
@@ -15,7 +20,6 @@ export default class ListMembers extends React.Component {
                     return (
                         <ScrollView>
                             <View style={styles.container}>
-                                <Text style={styles.title}>Closed People</Text>
                                 <Button
                                     type='outline'
                                     title='Add new person'
@@ -30,10 +34,10 @@ export default class ListMembers extends React.Component {
                                                 style={{
                                                     flex: 1,
                                                     flexDirection: 'row',
-                                                    borderColor: 'grey',
+                                                    borderColor: '#a0a0a0',
                                                     borderWidth: 0.5,
                                                     marginBottom: 10,
-                                                    borderRadius: 9,
+                                                    borderRadius: 5,
                                                     backgroundColor: '#dad7d766',
                                                     marginHorizontal: 16
                                                 }}
@@ -42,10 +46,10 @@ export default class ListMembers extends React.Component {
                                                     style={{
                                                         flex: 1,
                                                         marginBottom: 10,
-                                                        borderRadius: 4,
+                                                        borderRadius: 5,
                                                         flexDirection: 'row',
-                                                        borderColor: 'grey',
-                                                        borderRadius: 4,
+                                                        borderColor: '#a0a0a0',
+                                                        borderRadius: 5,
                                                     }}
                                                 >
                                                     <Avatar
@@ -55,9 +59,9 @@ export default class ListMembers extends React.Component {
                                                         source={{ uri: 'https://picsum.photos/200.jpg' }}
                                                     />
                                                     <View style={{ margin: 10 }}>
-                                                        <Text style={{ marginBottom: 3 }}>{per.name}</Text>
-                                                        <Text style={{ marginBottom: 3 }}>{per.phone}</Text>
-                                                        <Text style={{ marginBottom: 3 }}>{per.relationship}</Text>
+                                                        <Text style={{ marginBottom: 3, color: '#525252' }}>{per.name}</Text>
+                                                        <Text style={{ marginBottom: 3, color: '#525252' }}>{per.phone}</Text>
+                                                        <Text style={{ marginBottom: 3, color: '#525252' }}>{per.relationship}</Text>
                                                     </View>
                                                 </View>
                                             </View>
@@ -76,6 +80,7 @@ export default class ListMembers extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 10,
         flex: 1,
         paddingHorizontal: 8
     },
