@@ -5,6 +5,11 @@ import container from '../containers/container'
 import call from 'react-native-phone-call'
 
 export default class SignIn extends React.Component {
+
+  static navigationOptions = () => ({
+    title: 'Report',
+  });
+
   constructor(props) {
     super(props)
 
@@ -33,7 +38,6 @@ export default class SignIn extends React.Component {
       <ScrollView>
       <View style={styles.container}>
         <View style={{ margin: 20 }}>
-          <Text style={styles.title}>Report</Text>
           <View>
             <Text style={styles.label}>Family Member</Text>
             <TextInput

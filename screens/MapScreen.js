@@ -10,6 +10,11 @@ import container from '../containers/container'
 import { Subscribe } from 'unstated'
 
 class Campings extends React.Component {
+
+  static navigationOptions = () => ({
+    title: 'Detail',
+  });
+
   constructor(props) {
     super(props)
     this.state = {
@@ -61,14 +66,6 @@ class Campings extends React.Component {
             radius={1000}
             fillColor={'#42e7479e'}
           />
-          {/* {mapSpots.map(marker => (
-            <Marker
-              key={`marker-${marker.id}`}
-              coordinate={marker.latlng}
-            >
-              {campingMarker(marker)}
-            </Marker>
-          ))} */}
         </MapView>
       </View>
     )
@@ -246,7 +243,7 @@ const styles = StyleSheet.create({
   tab: {
     paddingHorizontal: 14,
     marginHorizontal: 10,
-    borderBottomWidth: 3,
+    borderBottomWidth: 2,
     borderBottomColor: 'transparent',
   },
   tabTitle: {
@@ -255,10 +252,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   activeTab: {
-    borderBottomColor: '#FF7657',
+    borderBottomColor: '#38A169',
   },
   activeTabTitle: {
-    color: '#FF7657',
+    color: '#38A169',
   },
   map: {
     flex: 1,

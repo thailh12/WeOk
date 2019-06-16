@@ -11,11 +11,15 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native'
-import { Avatar, ListItem, Button } from 'react-native-elements'
+import { Avatar, ListItem, Button, Divider } from 'react-native-elements'
 
 import container from '../containers/container'
 
 class Setting extends React.Component {
+  static navigationOptions = () => ({
+    title: 'Settings',
+  });
+
   render() {
     const { name } = container.state.me
     return (
@@ -27,16 +31,21 @@ class Setting extends React.Component {
               marginBottom: 30,
             }}
           >
-            <Image style={styles.image} source={{ uri: 'https://picsum.photos/200.jpg' }} />
-            <Text>{name}</Text>
+            <Image style={styles.image} source={require('../assets/images/logofull.png')} />
+            <Text>Undifined Team</Text>
           </TouchableOpacity>
           <ListItem style={styles.item} title="Language" rightTitle="English" />
+          <Divider />
           <ListItem style={styles.item} title="Change Password" />
+          <Divider />
           <ListItem style={styles.item} title="Family Members"
             onPress={() => this.props.navigation.navigate('ListMembers')}
           />
+          <Divider />
           <ListItem style={styles.item} title="Help" />
+          <Divider />
           <ListItem style={styles.item} title="Term and Policies" />
+          <Divider />
           <ListItem style={styles.item} title="About" />
         </View>
         <Button title="Logout" type="clear" />
@@ -61,9 +70,11 @@ const styles = StyleSheet.create({
   },
 
   image: {
+    marginTop: 10,
+    marginBottom: 10,
     width: 100,
     height: 100,
-    borderRadius: 100,
+    borderRadius: 50,
     borderWidth: 2,
     borderColor: 'rgba(210,210,210,1)',
   },

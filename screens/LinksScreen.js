@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { StyleSheet, View, Text, ScrollView, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from 'react-native'
 import { Button, Avatar, Image } from 'react-native-elements'
 import { Subscribe } from 'unstated'
 import container from '../containers/container'
@@ -32,7 +32,7 @@ export default class ListMembers extends React.Component {
                                 {
                                     following.map((per) => {
                                         return (
-                                            <TouchableWithoutFeedback
+                                            <TouchableOpacity
                                                 onPress={() => this.props.navigation.navigate('Information', per)}
                                                 key={per.phone}
                                             >
@@ -65,13 +65,13 @@ export default class ListMembers extends React.Component {
                                                         source={{ uri: 'https://picsum.photos/200.jpg' }}
                                                     />
                                                     <View style={{ margin: 10 }}>
-                                                        <Text style={{ marginBottom: 3, color: '#525252' }}>{per.name}</Text>
+                                                        <Text style={{ marginBottom: 3, color: '#525252', fontWeight: 'bold' }}>{per.name}</Text>
                                                         <Text style={{ marginBottom: 3, color: '#525252' }}>{per.phone}</Text>
                                                         <Text style={{ marginBottom: 3, color: '#525252' }}>{per.relationship}</Text>
                                                     </View>
                                                 </View>
                                             </View>
-                                            </TouchableWithoutFeedback>
+                                            </TouchableOpacity>
                                         )
                                     })
                                 }

@@ -3,13 +3,16 @@ import { View, ScrollView, StyleSheet, Text, TextInput } from 'react-native'
 import { Button } from 'react-native-elements'
 
 export default class Information extends React.Component {
+
+    static navigationOptions = () => ({
+        title: 'Information',
+      });
     
     render() {
         const { name, phone, relationship } = this.props.navigation.state.params
         return(
             <ScrollView>
                 <View style={styles.container}>
-                    <Text style={{ fontSize: 26, marginVertical: 10 }}>Information</Text>
                     <Text style={styles.label}>Full name</Text>
                     <TextInput
                         style={styles.inputText}
@@ -27,13 +30,13 @@ export default class Information extends React.Component {
                     />
                     <Button
                         title='Save'
-                        buttonStyle={{ backgroundColor: '#38A168' }}
+                        buttonStyle={{ backgroundColor: '#38A168', height: 56, }}
                         onPress={() => this.props.navigation.navigate('Links')}
                     />
                     <Button
                         title='Cancel'
                         type='outline'
-                        buttonStyle={{ borderColor: '#38A168', marginTop: 8 }}
+                        buttonStyle={{ borderColor: '#38A168', marginTop: 8, height: 56, }}
                         titleStyle={{ color: '#38A168' }}
                         onPress={() => this.props.navigation.navigate('Links')}
 
@@ -53,6 +56,7 @@ const styles = StyleSheet.create({
     label: {
       color: '#4A5568',
       marginBottom: 5,
+      marginTop: 10,
       marginLeft: 5
     },
     inputText: {

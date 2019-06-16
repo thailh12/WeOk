@@ -8,7 +8,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import Card from '../components/Card'
@@ -45,7 +45,7 @@ fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/profile')
 fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/follow')
 .then(res=>res.json())
 .then(res =>  {
-  res.shift()
+  res.reverse()
   res = res.map(item => {
     const { latlng } = item
     latlng.latitude = latlng.latutude
@@ -62,7 +62,7 @@ export default class HomeScreen extends React.Component {
         const { me } = container.state
         return (
           <View style={styles.container}>
-            <TouchableWithoutFeedback onPress={() => this.props.navigation.navigate('MapScreen')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('MapScreen')}>
               <View
                 wrapperStyle={{
                   flex: 1,
@@ -78,28 +78,27 @@ export default class HomeScreen extends React.Component {
                     borderRadius: 9,
                   }}
                 >
-                  <View>
+                  <View style={{overflow: 'hidden'}}>
                     <Image
-                      style={{ margin: 0 }}
-                      resizeMode="cover"
+                      style={{ margin: 0, height: 180, width: 344, borderTopLeftRadius: 10, borderTopRightRadius: 10 }}
                       source={require('../assets/images/background.png')}
                     />
                     <View style={{ margin: 10 }}>
                       <Text style={{ marginBottom: 5, fontSize: 20, fontWeight: 'bold' }}>{me.name}</Text>
                       <View style={{ flexDirection: 'row' }}>
-                        <Icon name='phone' size={14}/>
-                        <Text style={{ marginBottom: 5, marginLeft: 4 }}>{me.phone}</Text>
+                        <Icon name='phone' size={14} style={{color: '#525252'}} />
+                        <Text style={{ marginBottom: 5, marginLeft: 4, color: '#525252' }}>{me.phone}</Text>
                       </View>
                       <View style={{ flexDirection: 'row' }}>
-                        <Icon name='map-marker' size={14}/>
-                        <Text style={{ marginBottom: 5, marginLeft: 8 }}>{me.lastLocation}</Text>
+                        <Icon name='map-marker' size={14} style={{color: '#525252'}}/>
+                        <Text style={{ marginBottom: 5, marginLeft: 8, color: '#525252' }}>{me.lastLocation}</Text>
                       </View>
                     </View>
                     <Button type="clear" title="More" onPress={() => this.props.navigation.navigate('MapScreen')} />
                   </View>
                 </View>
               </View>
-            </TouchableWithoutFeedback>
+            </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.contentContainer}>
               {container.state.following && container.state.following.map((human) => {
                 return <Card info={human} key={human.phone} />

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card, Button, Icon, Avatar } from 'react-native-elements'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
-import { Text, Image, StyleSheet, View } from 'react-native'
+import { Text, Image, StyleSheet, View, TouchableOpacity  } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { withNavigation } from 'react-navigation'
 
@@ -13,7 +12,7 @@ const color = {
 class CardInfo extends React.Component {
   render() {
     return (
-      <TouchableWithoutFeedback
+      <TouchableOpacity 
         onPress={() => {
           if (!this.props.info.safe) this.props.navigation.navigate('ReportScreen', this.props.info)
         }}
@@ -22,7 +21,7 @@ class CardInfo extends React.Component {
           style={{
             flex: 1,
             flexDirection: 'row',
-            borderColor: 'grey',
+            borderColor: '#a0a0a0',
             borderWidth: 0.5,
             marginBottom: 10,
             borderRadius: 9,
@@ -35,7 +34,7 @@ class CardInfo extends React.Component {
               marginBottom: 10,
               borderRadius: 4,
               flexDirection: 'row',
-              borderColor: 'grey',
+              borderColor: '#a0a0a0',
               borderRadius: 4,
             }}
           >
@@ -47,24 +46,24 @@ class CardInfo extends React.Component {
             />
             <View style={{ margin: 10 }}>
               <Text style={{ marginBottom: 3, fontSize: 14, fontWeight: 'bold' }}>{this.props.info.name}</Text>
-              <Text style={{ marginBottom: 3 }}>{this.props.info.phone}</Text>
-              <Text style={{ marginBottom: 3 }}>{this.props.info.relationship}</Text>
+              <Text style={{ marginBottom: 3, color: '#525252' }}>{this.props.info.phone}</Text>
+              <Text style={{ marginBottom: 3, color: '#525252' }}>{this.props.info.relationship}</Text>
             </View>
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'right' }}>
-            <Text style={{ margin: 10 }}>{!this.props.info.safe ? 'Danger' : 'Safe'} </Text>
+            <Text style={{ margin: 10, color: !this.props.info.safe ? '#F56565' : '#68D391' }}>{!this.props.info.safe ? 'Danger' : 'Safe'} </Text>
             <View
               style={{
                 margin: 10,
                 height: 16,
                 width: 16,
                 borderRadius: '50%',
-                backgroundColor: !this.props.info.safe ? 'red' : 'green',
+                backgroundColor: !this.props.info.safe ? '#E53E3E' : '#38A169',
               }}
             />
           </View>
         </View>
-      </TouchableWithoutFeedback>
+      </TouchableOpacity >
     )
   }
 }
