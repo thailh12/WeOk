@@ -21,6 +21,11 @@ export default class LinksScreen extends React.Component {
           title='Send Map Screen'
           onPress={() => this.props.navigation.navigate('MapScreen')}
         />
+        <Button
+          style={styles.button}
+          title='Marker Screen'
+          onPress={() => this.props.navigation.navigate('MarkerScreen')}
+        />
       </View>
     )
   }

@@ -14,7 +14,6 @@ class Cont extends Container {
             }
         },
         following: [],
-
     }
 }
 

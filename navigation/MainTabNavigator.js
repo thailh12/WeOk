@@ -10,7 +10,9 @@ import SendMessageScreen from '../screens/SendMessage'
 import ReportScreen from '../screens/ReportScreen'
 import ListMembers from '../screens/ListMembers'
 import MapScreen from '../screens/MapScreen'
+import MarkerScreen from '../screens/MarkerScreen'
 import Settings from '../screens/Setting'
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ReportScreen,
@@ -29,6 +31,18 @@ HomeStack.navigationOptions = {
 
 const ListReportStack = createStackNavigator({
   Links: LinksScreen,
+  SendMessageScreen: {
+    screen: SendMessageScreen,
+  },
+  ReportScreen: {
+    screen: ReportScreen,
+  },
+  MapScreen: {
+    screen: MapScreen,
+  },
+  MarkerScreen: {
+    screen: MarkerScreen,
+  }
 })
 
 ListReportStack.navigationOptions = {
