@@ -29,7 +29,9 @@ HomeStack.navigationOptions = {
 }
 
 const ListReportStack = createStackNavigator({
-  Links: LinksScreen,
+  Links: {
+    screen: LinksScreen,
+  },
   ReportScreen: {
     screen: ReportScreen,
   },

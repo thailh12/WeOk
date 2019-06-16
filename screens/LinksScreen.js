@@ -7,6 +7,11 @@ import container from '../containers/container'
 import Card from '../components/Card'
 
 export default class ListMembers extends React.Component {
+
+    static navigationOptions = () => ({
+        title: 'People connect',
+    });
+
     render() {
         return (
             <Subscribe to={[container]}>

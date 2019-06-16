@@ -3,7 +3,10 @@ import { View, StyleSheet, Text } from 'react-native'
 import { Button } from 'react-native-elements'
 
 export default class LinksScreen extends React.Component {
-  render() {
+    static navigationOptions = () => ({
+        title: 'Settings',
+    });
+    render() {
     return (
       <View style={styles.container}>
         <Button
