@@ -96,7 +96,7 @@ class Campings extends React.Component {
           >
             Not Safe
           </Text>
-          <Text>You will be in the range of disaster. Please prepare by our suggestion.</Text>
+          <Text>You will be in the range of the disaster. Please following our suggestions for your safety.</Text>
         </View>
       )
     } else if (this.state.tabCurrent === 'todo') {
