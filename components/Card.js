@@ -46,7 +46,7 @@ class CardInfo extends React.Component {
               source={{ uri: 'https://picsum.photos/200.jpg' }}
             />
             <View style={{ margin: 10 }}>
-              <Text style={{ marginBottom: 3 }}>{this.props.info.name}</Text>
+              <Text style={{ marginBottom: 3, fontSize: 14, fontWeight: 'bold' }}>{this.props.info.name}</Text>
               <Text style={{ marginBottom: 3 }}>{this.props.info.phone}</Text>
               <Text style={{ marginBottom: 3 }}>{this.props.info.relationship}</Text>
             </View>

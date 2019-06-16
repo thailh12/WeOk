@@ -11,6 +11,7 @@ import ReportScreen from '../screens/ReportScreen'
 import ListMembers from '../screens/ListMembers'
 import MapScreen from '../screens/MapScreen'
 import Settings from '../screens/Setting'
+
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
   ReportScreen,
@@ -39,7 +40,8 @@ ListReportStack.navigationOptions = {
 }
 
 const ListMemberStack = createStackNavigator({
-  Settings: ListMembers,
+  Settings,
+  ListMembers,
 })
 
 ListMemberStack.navigationOptions = {

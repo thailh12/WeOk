@@ -12,8 +12,12 @@ import {
   Image,
 } from 'react-native'
 import { Avatar, ListItem, Button } from 'react-native-elements'
+
+import container from '../containers/container'
+
 class Setting extends React.Component {
   render() {
+    const { name } = container.state.me
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -24,10 +28,13 @@ class Setting extends React.Component {
             }}
           >
             <Image style={styles.image} source={{ uri: 'https://picsum.photos/200.jpg' }} />
-            <Text>Undefined Team</Text>
+            <Text>{name}</Text>
           </TouchableOpacity>
           <ListItem style={styles.item} title="Language" rightTitle="English" />
           <ListItem style={styles.item} title="Change Password" />
+          <ListItem style={styles.item} title="Family Members"
+            onPress={() => this.props.navigation.navigate('ListMembers')}
+          />
           <ListItem style={styles.item} title="Help" />
           <ListItem style={styles.item} title="Term and Policies" />
           <ListItem style={styles.item} title="About" />
