@@ -14,7 +14,8 @@ export default class SignIn extends React.Component {
   }
 
   _onPressButton = () => {
-    alert(this.state.note)
+    alert('Reported to server')
+    this.props.navigation.navigate('Home')
   }
 
   _onCancel = () => {

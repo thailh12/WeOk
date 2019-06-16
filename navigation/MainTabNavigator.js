@@ -49,7 +49,8 @@ ListReportStack.navigationOptions = {
 }
 
 const ListMemberStack = createStackNavigator({
-  Settings: ListMembers,
+  Settings,
+  ListMembers,
 })
 
 ListMemberStack.navigationOptions = {

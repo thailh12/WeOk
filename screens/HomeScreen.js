@@ -1,6 +1,7 @@
 import * as WebBrowser from 'expo-web-browser'
 import React from 'react'
 import { Button, Avatar, Divider } from 'react-native-elements'
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Image,
   Platform,
@@ -34,13 +35,22 @@ const member = [
 
 fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/profile')
 .then(res=>res.json())
-.then(res => container.setState({me: res}))
+.then(res => {
+  const { latlng } = res
+  latlng.latitude = latlng.latutude
+  // latlng.longitude = latlng.latutude
+  container.setState({me: {...res, latlng}})
+})
 
 fetch('https://getstartednode-chatty-bear.au-syd.mybluemix.net/api/follow')
 .then(res=>res.json())
 .then(res =>  {
   res.shift()
-  res.reverse()
+  res = res.map(item => {
+    const { latlng } = item
+    latlng.latitude = latlng.latutude
+    return {...item, latlng}
+  })
   container.setState({following: res})
 })
 
@@ -75,11 +85,17 @@ export default class HomeScreen extends React.Component {
                       source={require('../assets/images/background.png')}
                     />
                     <View style={{ margin: 10 }}>
-                      <Text style={{ marginBottom: 3 }}>{me.name}</Text>
-                      <Text style={{ marginBottom: 3 }}>{me.phone}</Text>
-                      <Text style={{ marginBottom: 3 }}>{me.lastLocation}</Text>
+                      <Text style={{ marginBottom: 5, fontSize: 20, fontWeight: 'bold' }}>{me.name}</Text>
+                      <View style={{ flexDirection: 'row' }}>
+                        <Icon name='phone' size={14}/>
+                        <Text style={{ marginBottom: 5, marginLeft: 4 }}>{me.phone}</Text>
+                      </View>
+                      <View style={{ flexDirection: 'row' }}>
+                        <Icon name='map-marker' size={14}/>
+                        <Text style={{ marginBottom: 5, marginLeft: 8 }}>{me.lastLocation}</Text>
+                      </View>
                     </View>
-                    <Button type="clear" title="More" onPress={() => this.props.navigate('MapScreen')} />
+                    <Button type="clear" title="More" onPress={() => this.props.navigation.navigate('MapScreen')} />
                   </View>
                 </View>
               </View>
@@ -117,7 +133,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 10,
   },
   welcomeContainer: {
     alignItems: 'center',
